@@ -1796,9 +1796,8 @@ static int msm_reboot_call
 #endif
 			restart_reason = 0x77665502;
 		} else if (!strcmp(cmd, "recovery_done")) { 
-            printk("recovery_done \n");
 #if defined(CONFIG_MACH_EUROPA) || defined(CONFIG_MACH_CALLISTO) || defined(CONFIG_MACH_COOPER) || defined(CONFIG_MACH_BENI) || defined(CONFIG_MACH_TASS) || defined(CONFIG_MACH_TASSMCT) || defined(CONFIG_MACH_TASSVTR) || defined(CONFIG_MACH_TASSTMO)|| defined(CONFIG_MACH_TASSATT)|| defined(CONFIG_MACH_GT2)|| defined(CONFIG_MACH_FLIPBOOK) || defined(CONFIG_MACH_LUCAS)  || defined(CONFIG_MACH_GIOATT)
-            set_recovery_mode_done();
+			set_recovery_mode_done();
 #endif
 			restart_reason = 0x77665503;
 		} else if (!strcmp(cmd, "download")) {
@@ -1813,8 +1812,15 @@ static int msm_reboot_call
 			unsigned code = simple_strtoul(cmd + 4, 0, 16) & 0xff;
 			restart_reason = 0x6f656d00 | code;
 		} else {
+#if defined(CONFIG_MACH_EUROPA) || defined(CONFIG_MACH_CALLISTO) || defined(CONFIG_MACH_COOPER) || defined(CONFIG_MACH_BENI) || defined(CONFIG_MACH_TASS) || defined(CONFIG_MACH_TASSMCT) || defined(CONFIG_MACH_TASSVTR) || defined(CONFIG_MACH_TASSTMO)|| defined(CONFIG_MACH_TASSATT)|| defined(CONFIG_MACH_GT2)|| defined(CONFIG_MACH_FLIPBOOK) || defined(CONFIG_MACH_LUCAS)  || defined(CONFIG_MACH_GIOATT)
+			set_recovery_mode_done();
+#endif
 			restart_reason = 0x77665501;
 		}
+	} else {
+#if defined(CONFIG_MACH_EUROPA) || defined(CONFIG_MACH_CALLISTO) || defined(CONFIG_MACH_COOPER) || defined(CONFIG_MACH_BENI) || defined(CONFIG_MACH_TASS) || defined(CONFIG_MACH_TASSMCT) || defined(CONFIG_MACH_TASSVTR) || defined(CONFIG_MACH_TASSTMO)|| defined(CONFIG_MACH_TASSATT)|| defined(CONFIG_MACH_GT2)|| defined(CONFIG_MACH_FLIPBOOK) || defined(CONFIG_MACH_LUCAS)  || defined(CONFIG_MACH_GIOATT)
+		set_recovery_mode_done();
+#endif
 	}
 	return NOTIFY_DONE;
 }
